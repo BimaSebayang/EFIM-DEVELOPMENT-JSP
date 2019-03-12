@@ -48,6 +48,12 @@
 			<version>1.1.0.RELEASE</version>
 		</dependency>
 
+		<dependency>
+			<groupId>id.co.roxas.efim</groupId>
+			<artifactId>EFIM-COMMON-DTO</artifactId>
+			<version>1.1.1</version>
+			<type>jar</type>
+		</dependency>
 
 	</dependencies>
 

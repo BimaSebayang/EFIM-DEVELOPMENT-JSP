@@ -15,17 +15,19 @@ import org.springframework.web.servlet.ModelAndView;
 import Share.WsResponse;
 import Share.Dto.UserPrivilegeCustom;
 import Share.Dto.HeadUser.TblDataUserDto;
+import id.co.roxas.efim.jspstyle.configuration.AppConfig;
 import id.co.roxas.efim.jspstyle.lib.BaseCtl;
 import id.co.roxas.efim.jspstyle.model.Forgot;
 import id.co.roxas.efim.jspstyle.model.Login;
 import id.co.roxas.efim.jspstyle.model.Register;
-import id.co.roxas.efim.jspstyle.service.login.LoginCtlSvc;
 
 @Controller
 public class LoginCtl extends BaseCtl{
 
+	
 	@Autowired
-	LoginCtlSvc loginCtlSvc;
+	private AppConfig appConfig;
+	
     private Map<String, Object> modelMap = new HashMap<>();
     
     public void callModelMapper(Object... objectMap) {
@@ -36,7 +38,7 @@ public class LoginCtl extends BaseCtl{
 	
 	@GetMapping(name = "enter")
 	public ModelAndView login() {
-		System.out.println("masuk ke sini");
+		System.out.println(appConfig.getCoreMapper());
 		ModelAndView mv = new ModelAndView("login/login");
 		callModelMapper(new Login(),new Forgot(),new Register());
 		mv.addAllObjects(modelMap);
@@ -72,7 +74,7 @@ public class LoginCtl extends BaseCtl{
 		body.put("user", login.getInputUserId());
 		body.put("pass", login.getInputPassword());
 		WsResponse response = restTemplateLib.getResultWs("/LoginCtl/ValidationUser", body, "post",
-				"projectCode=" + PROJECT);
+				"appConfig.getProjectCode()Code=" + appConfig.getProjectCode());
 		Map<String, Object> resultMap = new HashMap<>();
 		resultMap = restTemplateLib.mapperJsonToHashMap(response.getWsContent());
 		boolean pass = (boolean) resultMap.get("pass");
@@ -81,7 +83,7 @@ public class LoginCtl extends BaseCtl{
 			Map<String, Object> mapBody = new HashMap<>();
 			mapBody.put("userId", login.getInputUserId());
 			WsResponse resp01 = restTemplateLib.getResultWs("/UserInformationCompCtl/UserInf", mapBody, "post",
-					"projectCode=" + PROJECT);
+					"appConfig.getProjectCode()Code=" + appConfig.getProjectCode());
 			UserPrivilegeCustom upc = null;
 			try {
 				upc = restTemplateLib.mapperJsonToSingleDto(resp01.getWsContent(), UserPrivilegeCustom.class);
@@ -110,7 +112,7 @@ public class LoginCtl extends BaseCtl{
 		dto.setUserPhone(register.getRegisterUserPhone());
 
 		WsResponse wsResponse = restTemplateLib.getResultWs("/RegisterCtl/CreateUser", dto, "post",
-				"projectCode=" + PROJECT);
+				"appConfig.getProjectCode()Code=" + appConfig.getProjectCode());
 		Map<String, Object> resultMap = new HashMap<>();
 		resultMap = restTemplateLib.mapperJsonToHashMap(wsResponse.getWsContent());
 		String idNo = (String) resultMap.get("idNo");
@@ -131,7 +133,7 @@ public class LoginCtl extends BaseCtl{
 		dto.setSubjecEmail(subject);
 		dto.setMessageEmail(html);
 		
-		WsResponse wsResponse2 = restTemplateLib.getResultWs("/LoginCtl/CreateUserEmail", dto, "post", "projectCode=" + PROJECT);
+		WsResponse wsResponse2 = restTemplateLib.getResultWs("/LoginCtl/CreateUserEmail", dto, "post", "appConfig.getProjectCode()Code=" + appConfig.getProjectCode());
 		String responseFinal = null;
 		try {
 			responseFinal = restTemplateLib.mapperJsonToSingleDto(wsResponse2.getWsContent(), String.class);
@@ -163,7 +165,7 @@ public class LoginCtl extends BaseCtl{
     	ModelAndView mv = new ModelAndView();
     	System.out.println("user id : " + forgot.getForgotUserId());
     	WsResponse wsResponse = restTemplateLib.getResultWs("/ForgotPassCtl/GetEmail", forgot.getForgotUserId(), "post",
-				"projectCode=" + PROJECT);
+				"appConfig.getProjectCode()Code=" + appConfig.getProjectCode());
 		TblDataUserDto information = new TblDataUserDto();
 		try {
 			information = restTemplateLib.mapperJsonToSingleDto(wsResponse.getWsContent(), TblDataUserDto.class);
@@ -197,7 +199,7 @@ public class LoginCtl extends BaseCtl{
 			dto.setSubjecEmail(subject);
 			dto.setMessageEmail(html);
 			
-			WsResponse wsResponse2 = restTemplateLib.getResultWs("/LoginCtl/CreateUserEmail", dto, "post", "projectCode=" + PROJECT);
+			WsResponse wsResponse2 = restTemplateLib.getResultWs("/LoginCtl/CreateUserEmail", dto, "post", "appConfig.getProjectCode()Code=" + appConfig.getProjectCode());
 			String responseFinal = null;
 			try {
 				responseFinal = restTemplateLib.mapperJsonToSingleDto(wsResponse2.getWsContent(), String.class);

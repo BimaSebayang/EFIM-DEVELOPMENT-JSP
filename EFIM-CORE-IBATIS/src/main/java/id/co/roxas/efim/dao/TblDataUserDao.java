@@ -8,7 +8,8 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
-import id.co.roxas.efim.entity.TblDataUser;
+import id.co.roxas.efim.entity.owner.headuser.TblDataUser;
+
 
 @Mapper
 public interface TblDataUserDao {
@@ -23,8 +24,8 @@ public interface TblDataUserDao {
 	@Results(value = { @Result(property = "userId", column = "user_id", id = true),
 			@Result(property = "userName", column = "user_name") })
 	@Select("select tbl.* from "
-			+ "(select  ROW_NUMBER() OVER(order by ${orderBy} ${direction}) as row ,a.* from HEADUSER.TBL_DATA_USER a "
-			+ ")tbl " + "where " + "tbl.row > (#{page}-1)*2 " + "and tbl.row<= #{page}*2 ")
+			+ "(select  ROW_NUMBER() OVER(order by ${orderBy} ${direction}) as row ,a.* from HEADUSER.TBL_DATA_USER a) "
+			+ "tbl " + "where " + "tbl.row > (#{page}-1)*2 " + "and tbl.row<= #{page}*2 ")
 	List<TblDataUser> findAllWithOrderByParam(@Param("orderBy") String orderBy, @Param("direction") String direction, @Param("page") int page);
 
 	@Select("select count(a.user_id) from headuser.tbl_data_user a")

@@ -17,11 +17,20 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import id.co.roxas.efim.jspstyle.configuration.AppConfig;
+
+@Service
 public abstract class BaseCtl {
-	 protected RestTemplateLib restTemplateLib = new RestTemplateLib();
-	 protected final String PROJECT = "EFIM";
-	 private static String USER =  "efim.management123@gmail.com";
-	 private static String PASS =  "Roxas0309.!";
+	
+	 @Autowired
+	 protected RestTemplateLib restTemplateLib;
+	 
+	 @Autowired
+	 protected AppConfig appConfig;
+	 
 	
 	 public String sendMail(String toRecipient, String message, String subject, String messageIfSendSucces) {
 		 //open this to make more insecure gmail https://myaccount.google.com/lesssecureapps?pli=1
@@ -33,7 +42,7 @@ public abstract class BaseCtl {
 	        props.put("mail.smtp.auth", "true");
 	        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 	            protected PasswordAuthentication getPasswordAuthentication() {
-	                return new PasswordAuthentication(USER,PASS);
+	                return new PasswordAuthentication(appConfig.getUserGmailEfim(),appConfig.getPassGmailEfim());
 	            }
 	        });
 	        try {

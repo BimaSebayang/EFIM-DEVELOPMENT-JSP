@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import id.co.roxas.efim.dao.TblDataUserDao;
-import id.co.roxas.efim.entity.TblDataUser;
+import id.co.roxas.efim.entity.owner.headuser.TblDataUser;
 
 @RestController
 @RequestMapping("/TblDataUserCtl")

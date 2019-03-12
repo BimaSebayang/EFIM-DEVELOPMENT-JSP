@@ -29,8 +29,8 @@ public class RegisterCtl {
     		@RequestParam String projectCode) {
     String TS = new SimpleDateFormat("dd.MM.yyyy.HH.mm.ss").format(new Date());
     	
-        procedureDao.spCreatedHistoryAccess((String)rh.get("ip"),(String)rh.get("mac") , (String)rh.get("sn"), TS, "NONE",
-	    		  "http://localhost:8080/EFIM-CORE/RegisterCtl/CreateUser", projectCode);
+//        procedureDao.spCreatedHistoryAccess((String)rh.get("ip"),(String)rh.get("mac") , (String)rh.get("sn"), TS, "NONE",
+//	    		  "http://localhost:8080/EFIM-CORE/RegisterCtl/CreateUser", projectCode);
     
         String result = procedureDao.spCreatedTemporaryUser
              		(tblDataUserDto.getUserName(), tblDataUserDto.getUserId(), 
@@ -47,8 +47,8 @@ public class RegisterCtl {
     		@RequestParam String projectCode) {
         String TS = new SimpleDateFormat("dd.MM.yyyy.HH.mm.ss").format(new Date());
     	
-        procedureDao.spCreatedHistoryAccess((String)rh.get("ip"),(String)rh.get("mac") , (String)rh.get("sn"), TS, "NONE",
-	    		  "http://localhost:8080/EFIM-CORE/RegisterCtl/CreateAndSessionUser", projectCode);
+//        procedureDao.spCreatedHistoryAccess((String)rh.get("ip"),(String)rh.get("mac") , (String)rh.get("sn"), TS, "NONE",
+//	    		  "http://localhost:8080/EFIM-CORE/RegisterCtl/CreateAndSessionUser", projectCode);
     
         System.err.println("reg no : " + regNo);
         String result = procedureDao.spCreatedUserAndSession(regNo, TS, projectCode);

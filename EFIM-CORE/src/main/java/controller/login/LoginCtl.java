@@ -36,8 +36,8 @@ public class LoginCtl {
 			@RequestHeader Map<String, Object> rh, @RequestParam String projectCode) {
 		String TS = new SimpleDateFormat("dd.MM.yyyy.HH.mm.ss").format(new Date());
 
-		procedureDao.spCreatedHistoryAccess((String) rh.get("ip"), (String) rh.get("mac"), (String) rh.get("sn"), TS,
-				"NONE", "http://localhost:8080/EFIM-CORE/LoginCtl/ValidationUser", projectCode);
+//		procedureDao.spCreatedHistoryAccess((String) rh.get("ip"), (String) rh.get("mac"), (String) rh.get("sn"), TS,
+//				"NONE", "http://localhost:8080/EFIM-CORE/LoginCtl/ValidationUser", projectCode);
 
 		String result = procedureDao.spCheckValidUser((String) inputedUser.get("user"),
 				(String) inputedUser.get("pass"), projectCode, TS);
@@ -49,8 +49,8 @@ public class LoginCtl {
 	public WsResponse checkIfValidUser(@RequestHeader Map<String, Object> rh, @RequestParam String projectCode) {
 		String TS = new SimpleDateFormat("dd.MM.yyyy.HH.mm.ss").format(new Date());
 
-		procedureDao.spCreatedHistoryAccess((String) rh.get("ip"), (String) rh.get("mac"), (String) rh.get("sn"), TS,
-				"NONE", "http://localhost:8080/EFIM-CORE/LoginCtl/GetAllUser", projectCode);
+//		procedureDao.spCreatedHistoryAccess((String) rh.get("ip"), (String) rh.get("mac"), (String) rh.get("sn"), TS,
+//				"NONE", "http://localhost:8080/EFIM-CORE/LoginCtl/GetAllUser", projectCode);
 
 		Map<String, Object> mapp = tblDataUserSvc.getTheResultAllExistingUser(projectCode);
 		WsResponse wsResponse = new WsResponse(mapp.get("content"), (int) mapp.get("count"), false, null, null);
@@ -61,8 +61,8 @@ public class LoginCtl {
 	public WsResponse createdUserEmail(@RequestBody TblDataUserDto tblDataUserDto, @RequestHeader Map<String, Object> rh,
 			@RequestParam String projectCode) {
 		String TS = new SimpleDateFormat("dd.MM.yyyy.HH.mm.ss").format(new Date());
-		procedureDao.spCreatedHistoryAccess((String) rh.get("ip"), (String) rh.get("mac"), (String) rh.get("sn"), TS,
-				"NONE", "http://localhost:8080/EFIM-CORE/LoginCtl/CreateUserEmail", projectCode);
+//		procedureDao.spCreatedHistoryAccess((String) rh.get("ip"), (String) rh.get("mac"), (String) rh.get("sn"), TS,
+//				"NONE", "http://localhost:8080/EFIM-CORE/LoginCtl/CreateUserEmail", projectCode);
 		
 		//System.err.println("user " + tblDataUserDto.getUserName());
 		
