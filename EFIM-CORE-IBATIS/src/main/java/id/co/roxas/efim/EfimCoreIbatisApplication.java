@@ -6,7 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import id.co.roxas.efim.dao.TblDataUserDao;
+import id.co.roxas.efim.dao.TblDataUserTesterDao;
 
 @SpringBootApplication
 public class EfimCoreIbatisApplication implements CommandLineRunner{

@@ -12,7 +12,7 @@ import id.co.roxas.efim.entity.owner.headuser.TblDataUser;
 
 
 @Mapper
-public interface TblDataUserDao {
+public interface TblDataUserTesterDao {
 
 	@Results(value = { @Result(property = "userId", column = "user_id", id = true),
 			@Result(property = "userName", column = "user_name") })

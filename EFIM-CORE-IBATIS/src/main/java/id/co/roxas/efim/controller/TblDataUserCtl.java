@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import id.co.roxas.efim.dao.TblDataUserDao;
+import id.co.roxas.efim.dao.TblDataUserTesterDao;
 import id.co.roxas.efim.entity.owner.headuser.TblDataUser;
 
 @RestController
@@ -17,7 +17,7 @@ import id.co.roxas.efim.entity.owner.headuser.TblDataUser;
 public class TblDataUserCtl {
     
 	@Autowired
-	private TblDataUserDao tblDataUserDao;
+	private TblDataUserTesterDao tblDataUserDao;
 
 	@PostMapping("/all/param/{page}/{direction}")
 	public List<TblDataUser> getAllParam(@PathVariable("page") int page, 

@@ -1,4 +1,4 @@
-package id.co.roxas.efim.configuration;
+package id.co.roxas.efim.lib;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -7,15 +7,17 @@ import org.springframework.stereotype.Component;
 public class AppConfig {
    
 	@Value("${paging.number}")
-	private String pagingNumber;
+	private int pagingNumber;
 
-	public String getPagingNumber() {
+	public int getPagingNumber() {
 		return pagingNumber;
 	}
 
-	public void setPagingNumber(String pagingNumber) {
+	public void setPagingNumber(int pagingNumber) {
 		this.pagingNumber = pagingNumber;
 	}
+
+
 	
 	
 }

@@ -1,5 +1,8 @@
 package id.co.roxas.efim.entity.owner.headuser;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TblDataUser {
 	private String userId;
 	private String userName;
@@ -12,8 +15,15 @@ public class TblDataUser {
 	private String createdDate;
 	private String userStatus;
 	private String projectCode;
-	private TblSessionUser tblSessionUser;
-	
+	private List<TblSessionUser> tblSessionUsers = new ArrayList<>() ;
+	private TblSessionUser tblSessionUser = new TblSessionUser() ;
+
+	public List<TblSessionUser> getTblSessionUsers() {
+		return tblSessionUsers;
+	}
+	public void setTblSessionUsers(List<TblSessionUser> tblSessionUsers) {
+		this.tblSessionUsers = tblSessionUsers;
+	}
 	public TblSessionUser getTblSessionUser() {
 		return tblSessionUser;
 	}

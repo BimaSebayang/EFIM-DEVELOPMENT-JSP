@@ -1,7 +1,9 @@
 package Share.Dto.HeadUser;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class TblDataUserDto implements Serializable{
 	private static final long serialVersionUID = 4180449126938812144L;
@@ -16,10 +18,17 @@ public class TblDataUserDto implements Serializable{
     private String createdDate;
     private String userStatus;
     private String projectCode;
-    private TblSessionUserDto tblSessionUserDto;
+    private TblSessionUserDto tblSessionUserDto = new TblSessionUserDto();
+    private List<TblSessionUserDto> tblSessionUserDtos = new ArrayList<TblSessionUserDto>();
     private String messageEmail;
     private String subjecEmail;
-    
+ 
+	public List<TblSessionUserDto> getTblSessionUserDtos() {
+		return tblSessionUserDtos;
+	}
+	public void setTblSessionUserDtos(List<TblSessionUserDto> tblSessionUserDtos) {
+		this.tblSessionUserDtos = tblSessionUserDtos;
+	}
 	public String getMessageEmail() {
 		return messageEmail;
 	}
