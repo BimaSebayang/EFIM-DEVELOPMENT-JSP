@@ -26,6 +26,8 @@ public interface TblDataUserDao {
      public final String PAGINGMAGICWORD1 = "select tbl.* from(";	
      public final String PAGINGMAGICWORD2 = ")tbl where tbl.row > (#{page}-1)*#{composition} and tbl.row<= #{page}*#{composition} ";	
 	
+     
+     
 	 @Results(value= {
 			 @Result(property="userId", column="user_id", id=true),
 			 @Result(property="userName", column="user_name"),

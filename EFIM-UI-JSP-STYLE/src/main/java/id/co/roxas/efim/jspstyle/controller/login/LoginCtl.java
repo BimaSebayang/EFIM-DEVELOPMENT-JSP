@@ -74,7 +74,7 @@ public class LoginCtl extends BaseCtl{
 		body.put("user", login.getInputUserId());
 		body.put("pass", login.getInputPassword());
 		WsResponse response = restTemplateLib.getResultWs("/LoginCtl/ValidationUser", body, "post",
-				"appConfig.getProjectCode()Code=" + appConfig.getProjectCode());
+				"projectCode=" + appConfig.getProjectCode());
 		Map<String, Object> resultMap = new HashMap<>();
 		resultMap = restTemplateLib.mapperJsonToHashMap(response.getWsContent());
 		boolean pass = (boolean) resultMap.get("pass");
@@ -83,7 +83,7 @@ public class LoginCtl extends BaseCtl{
 			Map<String, Object> mapBody = new HashMap<>();
 			mapBody.put("userId", login.getInputUserId());
 			WsResponse resp01 = restTemplateLib.getResultWs("/UserInformationCompCtl/UserInf", mapBody, "post",
-					"appConfig.getProjectCode()Code=" + appConfig.getProjectCode());
+					"projectCode=" + appConfig.getProjectCode());
 			UserPrivilegeCustom upc = null;
 			try {
 				upc = restTemplateLib.mapperJsonToSingleDto(resp01.getWsContent(), UserPrivilegeCustom.class);
@@ -111,11 +111,6 @@ public class LoginCtl extends BaseCtl{
 		dto.setUserMail(register.getRegisterUserMail());
 		dto.setUserPhone(register.getRegisterUserPhone());
 
-		WsResponse wsResponse = restTemplateLib.getResultWs("/RegisterCtl/CreateUser", dto, "post",
-				"appConfig.getProjectCode()Code=" + appConfig.getProjectCode());
-		Map<String, Object> resultMap = new HashMap<>();
-		resultMap = restTemplateLib.mapperJsonToHashMap(wsResponse.getWsContent());
-		String idNo = (String) resultMap.get("idNo");
 
 		String html = " <p> Dear " + register.getRegisterUserName() + ", <br>"
 				+ " Terima kasih telah menggunakan EFIM sebagai layanan penyimpanan data anda."
@@ -133,16 +128,7 @@ public class LoginCtl extends BaseCtl{
 		dto.setSubjecEmail(subject);
 		dto.setMessageEmail(html);
 		
-		WsResponse wsResponse2 = restTemplateLib.getResultWs("/LoginCtl/CreateUserEmail", dto, "post", "appConfig.getProjectCode()Code=" + appConfig.getProjectCode());
-		String responseFinal = null;
-		try {
-			responseFinal = restTemplateLib.mapperJsonToSingleDto(wsResponse2.getWsContent(), String.class);
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+	
 		String html2 = " <p> Dear " + register.getRegisterUserName() + ", <br>"
 				+ " Terima kasih telah menggunakan EFIM sebagai layanan penyimpanan data anda."
 				+ " Kami Konfirmasi kembali data yang telah anda input . </p>" + " <p>Nama    : "
@@ -165,7 +151,7 @@ public class LoginCtl extends BaseCtl{
     	ModelAndView mv = new ModelAndView();
     	System.out.println("user id : " + forgot.getForgotUserId());
     	WsResponse wsResponse = restTemplateLib.getResultWs("/ForgotPassCtl/GetEmail", forgot.getForgotUserId(), "post",
-				"appConfig.getProjectCode()Code=" + appConfig.getProjectCode());
+				"projectCode=" + appConfig.getProjectCode());
 		TblDataUserDto information = new TblDataUserDto();
 		try {
 			information = restTemplateLib.mapperJsonToSingleDto(wsResponse.getWsContent(), TblDataUserDto.class);
@@ -181,10 +167,6 @@ public class LoginCtl extends BaseCtl{
 			dto.setUserName(information.getUserName());
 			dto.setUserId(information.getUserId());
 			dto.setUserMail(information.getUserMail());
-			Map<String, Object> resultMap = new HashMap<>();
-			resultMap = restTemplateLib.mapperJsonToHashMap(wsResponse.getWsContent());
-			String idNo = (String) resultMap.get("idNo");
-
 			String html = " <p> Dear " + information.getUserName() + ", <br>"
 					+ " Kami mendengar bahwa anda baru saja kehilangan password anda. Kami kirimkan link untuk "
 					+ " dapat mereset password yang anda punya sekarang </p>"
@@ -199,12 +181,11 @@ public class LoginCtl extends BaseCtl{
 			dto.setSubjecEmail(subject);
 			dto.setMessageEmail(html);
 			
-			WsResponse wsResponse2 = restTemplateLib.getResultWs("/LoginCtl/CreateUserEmail", dto, "post", "appConfig.getProjectCode()Code=" + appConfig.getProjectCode());
+			WsResponse wsResponse2 = restTemplateLib.getResultWs("/LoginCtl/CreateUserEmail", dto, "post", "projectCode=" + appConfig.getProjectCode());
 			String responseFinal = null;
 			try {
 				responseFinal = restTemplateLib.mapperJsonToSingleDto(wsResponse2.getWsContent(), String.class);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			

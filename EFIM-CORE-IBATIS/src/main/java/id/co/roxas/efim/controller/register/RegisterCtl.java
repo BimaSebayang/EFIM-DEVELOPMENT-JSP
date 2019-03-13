@@ -1,4 +1,4 @@
-package controller.register;
+package id.co.roxas.efim.controller.register;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,14 +12,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import common.dto.headuser.TblDataUserDto;
-import dao.ProcedureDao;
-import webservice.global.WsResponse;
+import Share.WsResponse;
+import Share.Dto.HeadUser.TblDataUserDto;
+import id.co.roxas.efim.controller.ConfigurationController;
+import id.co.roxas.efim.dao.owner.procedure.ProcedureDao;
+
 
 @RestController
 @RequestMapping("/RegisterCtl")
-public class RegisterCtl {
-
+public class RegisterCtl extends ConfigurationController{
+	
 	@Autowired
 	private ProcedureDao procedureDao;
 	
@@ -50,12 +52,11 @@ public class RegisterCtl {
 //        procedureDao.spCreatedHistoryAccess((String)rh.get("ip"),(String)rh.get("mac") , (String)rh.get("sn"), TS, "NONE",
 //	    		  "http://localhost:8080/EFIM-CORE/RegisterCtl/CreateAndSessionUser", projectCode);
     
-        System.err.println("reg no : " + regNo);				
+        System.err.println("reg no : " + regNo);
         String result = procedureDao.spCreatedUserAndSession(regNo, TS, projectCode);
         
         WsResponse wsResponse = new WsResponse(result, 1) ;
     	return wsResponse;
     }
-	
-	
+
 }

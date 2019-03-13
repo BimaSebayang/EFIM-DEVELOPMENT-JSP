@@ -18,19 +18,19 @@ public class EfimUiJspStyleApplication implements WebMvcConfigurer{
 		SpringApplication.run(EfimUiJspStyleApplication.class, args);
 	}
 
-	@Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		
-        /*registry
-                .addResourceHandler("/static/*", "/webjars/*")
-                .addResourceLocations("/static/", "/webjars/");*/
-        registry
-                .addResourceHandler("/static/**")
-                .addResourceLocations("/static/");
-        registry
-                .addResourceHandler("/webjars/**")
-                .addResourceLocations("/webjars/");
-    }
+//	@Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//		
+//        /*registry
+//                .addResourceHandler("/static/*", "/webjars/*")
+//                .addResourceLocations("/static/", "/webjars/");*/
+//        registry
+//                .addResourceHandler("/static/**")
+//                .addResourceLocations("/static/");
+//        registry
+//                .addResourceHandler("/webjars/**")
+//                .addResourceLocations("/webjars/");
+//    }
 	
 	
 }

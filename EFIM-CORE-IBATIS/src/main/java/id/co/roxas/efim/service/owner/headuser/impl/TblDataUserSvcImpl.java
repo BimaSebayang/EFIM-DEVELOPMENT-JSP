@@ -1,6 +1,7 @@
 package id.co.roxas.efim.service.owner.headuser.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +37,25 @@ public class TblDataUserSvcImpl extends ConfigurationService implements TblDataU
 		    dataUserDtos.add(tblDataUserDto);
 		}
 		return dataUserDtos;
+	}
+
+
+	@Override
+	public Map<String, Object> getTheResultEmailAddress(String userId, String projectCode) {
+		TblDataUser tblDataUser = tblDataUserDao.getUserInformation(userId, projectCode);
+		TblDataUserDto tblDataUserDto = mapperFacade.map(tblDataUser, TblDataUserDto.class);
+		Map<String, Object> mapResult = new HashMap<>();
+		if(tblDataUser==null) {
+			tblDataUserDto = new TblDataUserDto();
+			tblDataUserDto.setUserMail("ERROR");
+			mapResult.put("content", tblDataUserDto);
+			mapResult.put("count", 0);
+		}
+		else {
+		mapResult.put("content", tblDataUserDto);
+		mapResult.put("count", 1);
+		}
+		return mapResult;
 	}
 
 	

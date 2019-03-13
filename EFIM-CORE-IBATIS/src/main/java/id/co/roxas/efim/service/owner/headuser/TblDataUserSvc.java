@@ -10,4 +10,5 @@ public interface TblDataUserSvc {
 
 	public List<TblDataUserDto> selectAllUserWithParamPaging(Paging paging);
 	
+	public Map<String, Object> getTheResultEmailAddress(String userId, String projectCode);
 }

@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 
 import Share.WsResponse;
 import id.co.roxas.efim.jspstyle.configuration.AppConfig;
@@ -30,7 +31,9 @@ public class RestTemplateLib extends MapperWs implements Serializable{
 	private static final long serialVersionUID = 1564074110921000829L;
 	
 	private String componentCoreScanner() {
-		return env.getProperty(appConfig.getCoreMapper());
+		String url = env.getProperty(appConfig.getCoreMapper());
+		System.out.println("url yang terpakai : " + url);
+		return url;
 	}
 	
 	public WsResponse getResultWs(String url, Object body, String method, String... paramQuery) {
@@ -61,6 +64,8 @@ public class RestTemplateLib extends MapperWs implements Serializable{
 		if(method.equalsIgnoreCase("POST")) {
 			RestTemplate restTemplate = new RestTemplate();
 			HttpEntity httpEntity = new HttpEntity(body,header);
+			System.out.println(new Gson().toJson(body));
+			System.out.println(componentCoreScanner()+url+finalparamQuery);
 			resultApi = restTemplate.exchange(componentCoreScanner()+url+finalparamQuery, HttpMethod.POST,httpEntity,String.class).getBody();
 			System.err.println("hasil : " + resultApi);
 		}

@@ -37,7 +37,7 @@ public class TblEfimDbSvcImpl extends CommonConstant implements TblEfimDbSvc{
 	
 	@Autowired
 	private TblEfimDbDao tblEfimDbDao;
-	
+		
 	private MapperFacade mapperFacade = new DefaultMapperFactory.Builder().build().getMapperFacade();
 	
 	@Override

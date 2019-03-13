@@ -35,7 +35,7 @@
 
 
 <%-- <link rel="stylesheet" href="<core:url value="/css/MasterStyle.css"/>"> --%>
-<link rel="stylesheet" href="/css/MasterStyle.css">
+<link rel="stylesheet" href="css/MasterStyle.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login</title>
 </head>
