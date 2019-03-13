@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import Share.WsResponse;
 import Share.Dto.UserPrivilegeCustom;
@@ -36,8 +38,9 @@ public class LoginCtl extends BaseCtl{
 		modelMap.put("register", objectMap[2]);
     }
 	
-	@GetMapping(name = "enter")
-	public ModelAndView login() {
+	//@GetMapping(name = "enter")
+	@RequestMapping("/enter")
+    public ModelAndView login() {	
 		System.out.println(appConfig.getCoreMapper());
 		ModelAndView mv = new ModelAndView("login/login");
 		callModelMapper(new Login(),new Forgot(),new Register());
@@ -45,7 +48,9 @@ public class LoginCtl extends BaseCtl{
 		return  mv;
 	}
 	
-	@PostMapping(name = "event")
+	
+	//@PostMapping(name = "event")
+	@RequestMapping(name = "/event", method = RequestMethod.POST)
 	public ModelAndView toLogin(@ModelAttribute("login") Login login,@ModelAttribute("forgot") Forgot forgot,
 			@ModelAttribute("register") Register register, HttpServletRequest request) {
 		

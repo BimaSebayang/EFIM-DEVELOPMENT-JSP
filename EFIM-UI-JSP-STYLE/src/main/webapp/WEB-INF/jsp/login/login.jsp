@@ -39,7 +39,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login</title>
 </head>
-<body background="images/loginBg.jpg"
+<body background="<core:url value = '/static/images/loginBg.jpg'/>"
 	style="background-repeat: no-repeat; background-size: cover;">
 
 

@@ -17,6 +17,10 @@ public class EfimUiJspStyleApplication implements WebMvcConfigurer{
 	public static void main(String[] args) {
 		SpringApplication.run(EfimUiJspStyleApplication.class, args);
 	}
+	
+	 public void addResourceHandlers(ResourceHandlerRegistry registry) {
+	        registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+	 }
 
 //	@Override
 //    public void addResourceHandlers(ResourceHandlerRegistry registry) {
