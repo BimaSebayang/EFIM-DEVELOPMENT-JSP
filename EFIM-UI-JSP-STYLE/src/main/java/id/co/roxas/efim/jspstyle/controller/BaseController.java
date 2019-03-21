@@ -8,11 +8,11 @@ import id.co.roxas.efim.jspstyle.lib.BaseCtl;
 import id.co.roxas.efim.jspstyle.lib.RestTemplateLib;
 
 @Controller
-public class HeadCtl extends BaseCtl {
+public class BaseController  {
   
 	@RequestMapping("/")
-	public ModelAndView header() {
-		return new ModelAndView("head");
+	public String header() {
+		return "head";
 	}
 	
 	

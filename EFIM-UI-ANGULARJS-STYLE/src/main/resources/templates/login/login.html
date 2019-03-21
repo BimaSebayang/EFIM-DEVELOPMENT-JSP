@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>LOGIN</title>
+<style type="text/css" ></style>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/MasterStyle.css" />   
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="/js/owner/login/login.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#register").click(function() {
+			$("#loginForm:visible").css("visibility", "hidden");
+			$("#registerForm:visible").css("visibility", "visible");
+			$("#forgotForm:visible").css("visibility", "hidden");
+		});
+		$("#login").click(function() {
+			$("#loginForm:visible").css("visibility", "visible");
+			$("#registerForm:visible").css("visibility", "hidden");
+			$("#forgotForm:visible").css("visibility", "hidden");
+		});
+		$("#forgotPassword").click(function() {
+			$("#loginForm:visible").css("visibility", "hidden");
+			$("#registerForm:visible").css("visibility", "hidden");
+			$("#forgotForm:visible").css("visibility", "visible");
+		});
+
+		$("#loginForm:visible").css("visibility", "visibility");
+		$("#registerForm:visible").css("visibility", "hidden");
+		$("#forgotForm:visible").css("visibility", "hidden");
+	});
+</script>
+
+
+</head>
+<body background="/images/loginBg.jpg"
+	style="background-repeat: no-repeat; background-size: cover;">
+
+<div ng-app="login">
+<div class="introHead">
+		<div class="buttonHead">
+			<button title="Login" id="login" class="subButtonHead1">LOGIN</button>
+			<button title="Register" id="register" class="subButtonHead2">REGISTER</button>
+			<button title="Forgot Password" id="forgotPassword" class="subButtonHead3">FORGOT PASSWORD</button>
+		</div>
+</div>
+
+		<div class="regLoginBox" id="loginForm" ng-controller="validationLogin">
+		<form name="LoginForm" ng-submit="submitForm()">
+			<p style="position : relative; left: 35%;">
+				<input type="text" class = "text-box" placeHolder="Nama User" ng-model="user"/>
+			</p>
+			<p style="position : relative; left: 35%; top : 5%;">
+				<input type="password"  class = "text-box" placeHolder="Password" ng-model="pass"/>
+			</p>
+			<p style="position : relative; left: 8%; top : 17%;">	
+			<button type="submit" class="buttonRegBox" ng-click="redirectToUrl()">LOGIN</button>
+			</p>
+		</form>
+		</div>
+
+		<div class="regLoginBox" id="forgotForm">
+			<p style="position : relative; left: 35%;">
+				<input type="text" placeHolder="USER ID" class = "text-box"/>
+			</p>
+			<p style="position : relative; left: 8%; top : 17%;">
+			<button type="SUBMIT"  name="RESET PASSWORD" class="buttonRegBox" >FORGOT</button>
+			</p>
+		</div>
+
+		<div class="regLoginBox" id="registerForm">
+		     
+		   <div id="userInfoId">  
+			<p>
+				<input type="text" placeHolder = "Nama User" class = "text-box-register"/>
+			</p>
+			<p>
+				<input type="text" placeHolder = "User Id" class = "text-box-register"/>
+			</p>
+			
+			<button type="button"><i class="material-icons">arrow_forward</i></button>
+		   </div>
+			
+		   <div id="userContact">
+			<p>
+				<input type="text" placeHolder = "User Email" class = "text-box-register"/>
+			</p>
+		   
+			<p>
+				<input type="text" placeHolder = "User Telp." class = "text-box-register"/>
+			</p>
+			
+			<p>
+			<button type="button"><i class="material-icons">arrow_back</i></button>
+			<button type="button"><i class="material-icons">arrow_forward</i></button>
+			</p>
+		   </div>	
+		   
+		   <div id="userPassword"> 	
+			<p>
+				<input type="password" placeHolder = "Password" class = "text-box-register"/>
+			</p>
+			<p>
+				<input type="password" placeHolder = "Konfirmasi Password" class = "text-box-register"/>
+			</p>
+			<button type="button"><i class="material-icons">arrow_back</i></button>
+		   </div>
+		   	
+			<button type="submit"  name="register" class="buttonRegBox">REGISTER</button>
+		</div>
+</div>
+
+</body>
+</html>

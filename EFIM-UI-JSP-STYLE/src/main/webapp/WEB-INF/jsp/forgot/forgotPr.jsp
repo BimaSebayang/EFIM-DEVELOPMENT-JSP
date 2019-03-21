@@ -6,7 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body background="http://localhost:2020/EFIM-CORE-IBATIS/PictureCtl/GetTheBackgroundPicture?projectCode=EFIM&pictureName=EFIMBG.png"
+	style="background-repeat: no-repeat; background-size: cover;">
 polos twitter.
 </body>
 </html>

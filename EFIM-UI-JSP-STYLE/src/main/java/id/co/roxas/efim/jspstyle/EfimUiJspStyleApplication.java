@@ -12,15 +12,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 
 @SpringBootApplication
-public class EfimUiJspStyleApplication implements WebMvcConfigurer{
+public class EfimUiJspStyleApplication{
 
 	public static void main(String[] args) {
 		SpringApplication.run(EfimUiJspStyleApplication.class, args);
 	}
 	
-	 public void addResourceHandlers(ResourceHandlerRegistry registry) {
-	        registry.addResourceHandler("/static/**").addResourceLocations("/static/");
-	 }
+//	 public void addresourcehandlers(resourcehandlerregistry registry) {
+//	        registry.addresourcehandler("/static/**").addresourcelocations("/static/");
+//	 }
 
 //	@Override
 //    public void addResourceHandlers(ResourceHandlerRegistry registry) {

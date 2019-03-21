@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 
-<body background="images/loginBg.jpg"
+<body background="http://localhost:2020/EFIM-CORE-IBATIS/PictureCtl/GetTheBackgroundPicture?projectCode=EFIM&pictureName=EFIMBG.png"
 	style="background-repeat: no-repeat; background-size: cover;">
 	
 	<a href="${pageContext.request.contextPath}/enter">Enter</a>

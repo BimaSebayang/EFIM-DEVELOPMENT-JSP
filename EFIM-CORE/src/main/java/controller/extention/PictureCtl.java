@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,6 +12,7 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.UUID;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.CacheControl;
@@ -41,8 +43,8 @@ public class PictureCtl {
 	@Autowired
 	TblPictureFrontEndSvc tblPictureFrontEndSvc;
 	
-	@RequestMapping(value = "/GetTheBackgroundPicture", method = RequestMethod.POST,params = {"projectCode"})
-	public ResponseEntity<byte[]> getImageFromDatabase(@RequestBody String pictureName, 
+	@RequestMapping(value = "/GetTheBackgroundPicture", method = RequestMethod.GET,params = {"projectCode","pictureName"})
+	public ResponseEntity<byte[]> getImageFromDatabase(@RequestParam String pictureName, 
 			@RequestParam String projectCode) {
 		HttpHeaders headers = new HttpHeaders();
 		System.err.println("picture id " + pictureName + " project code " + projectCode);
@@ -51,6 +53,20 @@ public class PictureCtl {
 		ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
 	    return responseEntity;
 	}
+	
+//	@RequestMapping(value = "/GetTheBackgroundPicture", method = RequestMethod.GET,params = {"projectCode","pictureName"})
+//	public File getImageFromDatabase(@RequestParam String pictureName, 
+//			@RequestParam String projectCode) {
+//		byte[] media = tblPictureFrontEndSvc.getTheImage(pictureName, projectCode);
+//		try {
+//			FileUtils.writeByteArrayToFile(new File("pathname"), media);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		File image = new File("pathname");
+//	    return image;
+//	}
 	
 	@RequestMapping(value = "/GetSpecificImage", method = RequestMethod.POST)
 	public ResponseEntity<byte[]> getImageAsResponseEntity(
