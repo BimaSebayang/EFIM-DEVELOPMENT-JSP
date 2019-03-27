@@ -1,4 +1,4 @@
-package id.co.roxas.efim.angularjsstyle.js.component.owner;
+package id.co.roxas.efim.angularjsstyle.controller.component.owner;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
@@ -23,7 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import id.co.roxas.efim.angularjsstyle.configuration.AppConfig;
-import id.co.roxas.efim.angularjsstyle.js.component.componentConfiguration;
+import id.co.roxas.efim.angularjsstyle.controller.component.componentConfiguration;
 import id.co.roxas.efim.angularjsstyle.lib.RestTemplateLib;
 
 @Service("baseController")
@@ -36,6 +36,14 @@ public abstract class BaseController extends componentConfiguration implements S
 	
 	@Autowired
 	protected RestTemplateLib restTemplateLib;
+	
+	public String redirectToUri(HttpServletRequest request, String url) {
+		if(!isAccessFromDesktop(request)) {
+			url = "/mobile/" + url;
+		}
+		System.out.println("redirect ke url : " + url);
+		return url;	
+	}
 	
 	public boolean isAccessFromDesktop(HttpServletRequest request) {
 		String userAgent = request.getHeader("user-agent");

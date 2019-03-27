@@ -52,7 +52,7 @@ public class RestTemplateLib extends MapperWs implements Serializable{
 			   finalparamQuery = "?";
 			   for (int i = 0; i < paramQuery.length; i++) {
 				 finalparamQuery += paramQuery[i];
-				 if(i<paramQuery.length){
+				 if(i<paramQuery.length-1){
 					 finalparamQuery += "&"; 
 				 }
 			   }

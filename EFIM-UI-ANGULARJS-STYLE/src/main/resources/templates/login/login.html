@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/MasterStyle.css" />   
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<script src="/js/owner/login/login.js"></script>
+<script src="/js/owner/login/appLogin.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -49,7 +49,7 @@
 </div>
 
 		<div class="regLoginBox" id="loginForm" ng-controller="validationLogin">
-		<form name="LoginForm" ng-submit="submitForm()">
+		<form name="LoginForm" ng-submit="submitLoginForm()">
 			<p style="position : relative; left: 35%;">
 				<input type="text" class = "text-box" placeHolder="Nama User" ng-model="user"/>
 			</p>
@@ -62,23 +62,25 @@
 		</form>
 		</div>
 
-		<div class="regLoginBox" id="forgotForm">
+		<div class="regLoginBox" id="forgotForm" ng-controller="forgotPassword">
+		<form name = "forgotPasswordForm" ng-submit="submitForgotPasswordForm()">
 			<p style="position : relative; left: 35%;">
-				<input type="text" placeHolder="USER ID" class = "text-box"/>
+				<input type="text" placeHolder="USER ID" class = "text-box" ng-model="userId"/>
 			</p>
 			<p style="position : relative; left: 8%; top : 17%;">
-			<button type="SUBMIT"  name="RESET PASSWORD" class="buttonRegBox" >FORGOT</button>
+			<button type="SUBMIT"  name="RESET PASSWORD" class="buttonRegBox">FORGOT</button>
 			</p>
+		</form>
 		</div>
 
-		<div class="regLoginBox" id="registerForm">
-		     
+		<div class="regLoginBox" id="registerForm" ng-controller="newRegister">
+		  <form ng-submit="submitRegisterForm()"> 
 		   <div id="userInfoId">  
 			<p>
-				<input type="text" placeHolder = "Nama User" class = "text-box-register"/>
+				<input type="text" placeHolder = "Nama User" class = "text-box-register" ng-model="registerUserName"/>
 			</p>
 			<p>
-				<input type="text" placeHolder = "User Id" class = "text-box-register"/>
+				<input type="text" placeHolder = "User Id" class = "text-box-register" ng-model="registerUserId"/>
 			</p>
 			
 			<button type="button"><i class="material-icons">arrow_forward</i></button>
@@ -86,11 +88,11 @@
 			
 		   <div id="userContact">
 			<p>
-				<input type="text" placeHolder = "User Email" class = "text-box-register"/>
+				<input type="text" placeHolder = "User Email" class = "text-box-register" ng-model="registerUserMail"/>
 			</p>
 		   
 			<p>
-				<input type="text" placeHolder = "User Telp." class = "text-box-register"/>
+				<input type="text" placeHolder = "User Telp." class = "text-box-register" ng-model="registerUserPhone"/>
 			</p>
 			
 			<p>
@@ -101,15 +103,16 @@
 		   
 		   <div id="userPassword"> 	
 			<p>
-				<input type="password" placeHolder = "Password" class = "text-box-register"/>
+				<input type="password" placeHolder = "Password" class = "text-box-register" ng-model="registerUserPassword"/>
 			</p>
 			<p>
-				<input type="password" placeHolder = "Konfirmasi Password" class = "text-box-register"/>
+				<input type="password" placeHolder = "Konfirmasi Password" class = "text-box-register" ng-model="confirmUserRegisterPassword"/>
 			</p>
 			<button type="button"><i class="material-icons">arrow_back</i></button>
 		   </div>
 		   	
 			<button type="submit"  name="register" class="buttonRegBox">REGISTER</button>
+			</form>  
 		</div>
 </div>
 

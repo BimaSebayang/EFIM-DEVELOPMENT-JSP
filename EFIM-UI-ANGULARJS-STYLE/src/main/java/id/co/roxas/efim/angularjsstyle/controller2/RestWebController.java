@@ -1,4 +1,4 @@
-package id.co.roxas.efim.angularjsstyle.controller;
+package id.co.roxas.efim.angularjsstyle.controller2;
 
 import java.util.ArrayList;
 import java.util.List;
