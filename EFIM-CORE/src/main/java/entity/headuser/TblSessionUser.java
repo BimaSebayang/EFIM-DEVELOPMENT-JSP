@@ -25,8 +25,8 @@ public class TblSessionUser {
 	private Integer invalidCount;
 	private Integer sessionMess;
 	
-	 @Id
-	 @Column(name="USER_SESSION_CODE") 
+	@Id
+	@Column(name="USER_SESSION_CODE") 
 	public String getUserSessionCode() {
 		return userSessionCode;
 	}

@@ -11,8 +11,14 @@ public class TblSessionUserDto implements Serializable{
 	private String projectCode;
 	private Integer invalidCount;
 	private Integer sessionMess;
+	private TblDataUserDto tblDataUserDto;
 	
-	
+	public TblDataUserDto getTblDataUserDto() {
+		return tblDataUserDto;
+	}
+	public void setTblDataUserDto(TblDataUserDto tblDataUserDto) {
+		this.tblDataUserDto = tblDataUserDto;
+	}
 	public String getUserSessionCode() {
 		return userSessionCode;
 	}

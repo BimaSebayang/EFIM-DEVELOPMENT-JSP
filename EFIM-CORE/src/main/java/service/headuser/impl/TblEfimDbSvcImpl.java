@@ -52,7 +52,8 @@ public class TblEfimDbSvcImpl extends CommonConstant implements TblEfimDbSvc{
 		if(tblDataUser!=null) {
 		userPrivilegeCustom.setUserId(tblDataUser.getUserId());
 		userPrivilegeCustom.setUserName(tblDataUser.getUserName());
-		userPrivilegeCustom.setUserSessionCode(tblDataUser.getUserSessionCode());
+		//userPrivilegeCustom.setUserSessionCode(tblDataUser.getUserSessionCode());
+		//userPrivilegeCustom.setUserSessionCode(tblDataUser.getTblSessionUser().getUserSessionCode());
 		byte[] pic = tblUserPictureProfileDao.getUserPicture(tblDataUser.getUserPhoto(), projectCode);
 		userPrivilegeCustom.setUserPhoto(pic);
 		mapper.put("content", userPrivilegeCustom);

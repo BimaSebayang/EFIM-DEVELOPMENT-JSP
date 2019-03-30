@@ -15,11 +15,11 @@ import entity.headuser.pk.TblDataUserPk;
 
 public interface TblDataUserDao extends JpaRepository<TblDataUser, TblDataUserPk>{
 	
-    @Query("Select a,b from TblDataUser a, TblSessionUser b where a.userSessionCode = b.userSessionCode")
-    public List<Object[]> selectAll();
-    
-    @Query("Select a,b from TblDataUser a, TblSessionUser b where a.userSessionCode = b.userSessionCode")
-    public Page<Object[]> selectAllWithPaging(Pageable pageable);
+//    @Query("Select a,b from TblDataUser a, TblSessionUser b where a.userSessionCode = b.userSessionCode")
+//    public List<Object[]> selectAll();
+//    
+//    @Query("Select a,b from TblDataUser a, TblSessionUser b where a.userSessionCode = b.userSessionCode")
+//    public Page<Object[]> selectAllWithPaging(Pageable pageable);
     
     @Query("SELECT a FROM TblDataUser a "
     		+ " where a.userId = :userId and a.projectCode = :projectCode")

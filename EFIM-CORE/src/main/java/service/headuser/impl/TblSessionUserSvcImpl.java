@@ -30,20 +30,20 @@ public class TblSessionUserSvcImpl implements TblSessionUserSvc{
 	
 	@Override
 	public Map<String, Object> getResultUser() {
-		List<Object[]> users = tableDataUserDao.selectAll();
+		//List<Object[]> users = tableDataUserDao.selectAll();
 		Map<String, Object> mapper = new HashMap<>();
 		
-		List<TblDataUserDto> dataUserDtos = new ArrayList<>();
-		for (Object[] user : users) {
-			TblDataUser dataUser = (TblDataUser) user[0];
-			TblSessionUser session = (TblSessionUser) user[1];
-			TblDataUserDto tblDataUserDto = mapperFacade.map(dataUser, TblDataUserDto.class);
-			tblDataUserDto.setTblSessionUserDto(mapperFacade.map(session, TblSessionUserDto.class));
-		    dataUserDtos.add(tblDataUserDto);
-		}
-		
-		mapper.put("content", dataUserDtos);
-		mapper.put("size", dataUserDtos.size());
+//		List<TblDataUserDto> dataUserDtos = new ArrayList<>();
+//		for (Object[] user : users) {
+//			TblDataUser dataUser = (TblDataUser) user[0];
+//			TblSessionUser session = (TblSessionUser) user[1];
+//			TblDataUserDto tblDataUserDto = mapperFacade.map(dataUser, TblDataUserDto.class);
+//			tblDataUserDto.setTblSessionUserDto(mapperFacade.map(session, TblSessionUserDto.class));
+//		    dataUserDtos.add(tblDataUserDto);
+//		}
+//		
+//		mapper.put("content", dataUserDtos);
+//		mapper.put("size", dataUserDtos.size());
 		return mapper;
 	}
 

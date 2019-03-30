@@ -33,6 +33,19 @@ public class TblDataUser {
 	private String createdDate;
 	private String userStatus;
 	private String projectCode;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="USER_SESSION_CODE", referencedColumnName="USER_SESSION_CODE")
+	private TblSessionUser tblSessionUser;
+
+	
+	public TblSessionUser getTblSessionUser() {
+		return tblSessionUser;
+	}
+
+	public void setTblSessionUser(TblSessionUser tblSessionUser) {
+		this.tblSessionUser = tblSessionUser;
+	}
 
 	@Id
 	@Column(name = "USER_ID")
@@ -133,6 +146,8 @@ public class TblDataUser {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	
+	
 
 	// Join column part --------------------------------- /////
 
