@@ -27,6 +27,29 @@ public class AppConfig {
 	@Value("${headUrlSolr}")
 	private String headUrlSolr;
 	
+	@Value("${forgotUrl}")
+	private String forgotUrl;
+	
+	@Value("${registerUrl}")
+	private String registerUrl;
+	
+	
+
+	public String getForgotUrl() {
+		return forgotUrl;
+	}
+
+	public void setForgotUrl(String forgotUrl) {
+		this.forgotUrl = forgotUrl;
+	}
+
+	public String getRegisterUrl() {
+		return registerUrl;
+	}
+
+	public void setRegisterUrl(String registerUrl) {
+		this.registerUrl = registerUrl;
+	}
 
 	public String getCoreMapper() {
 		return coreMapper;

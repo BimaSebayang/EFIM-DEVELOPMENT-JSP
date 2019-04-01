@@ -32,7 +32,7 @@ public class TblDataUserSvcImpl extends ConfigurationService implements TblDataU
 			TblDataUserDto tblDataUserDto = mapperFacade.map(tblDataUser, TblDataUserDto.class);
 			TblSessionUserDto tblSessionUserDto = mapperFacade.map(tblDataUser.getTblSessionUser(), TblSessionUserDto.class);
 			List<TblSessionUserDto> tblSessionUserDtos = mapperFacade.mapAsList(tblDataUserDto.getTblSessionUserDtos(), TblSessionUserDto.class);
-		    tblDataUserDto.setTblSessionUserDto(tblSessionUserDto);
+		    tblDataUserDto.setUserSessionCode(tblSessionUserDto);
 		    tblDataUserDto.setTblSessionUserDtos(tblSessionUserDtos);
 		    dataUserDtos.add(tblDataUserDto);
 		}

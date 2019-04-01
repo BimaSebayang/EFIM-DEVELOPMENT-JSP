@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ import Share.WsResponse;
 import Share.Dto.UserPrivilegeCustom;
 import Share.Dto.HeadUser.TblDataUserDto;
 import id.co.roxas.efim.angularjsstyle.controller.component.owner.BaseController;
+import id.co.roxas.efim.angularjsstyle.lib.HttpInjector;
 import id.co.roxas.efim.angularjsstyle.model.Register;
 
 @RestController
@@ -47,7 +49,7 @@ public class loginRestCtl extends BaseController{
 				+ register.getRegisterUserName() + "<br>" + "    User Id : " + register.getRegisterUserId()+ "<br>" + "    No Telp : "
 				+ register.getRegisterUserPhone() + "<br></p>"
 				+ " <p>Anda dapat mengklik button dibawah ini untuk dapat langsung mengaktifkan akun anda </p>"
-				+ " <a href='http://localhost:28080/EFIM-UI/registeration/successPr.zul?id=" 
+				+ " <a href='"+appConfig.getRegisterUrl()+"/successPr.zul?id=" 
 				+ "'><button>Activate your Account</button></a>"
 				+ " <p>Anda dapat mengabaikan pesan ini jika tidak ingin melanjutkan <br>" + "    Best Regard,</p>"
 				+ "<br>" + "<p> <b>Notes : Pesan ini akan kadaluarsa dalam 3 hari</b> </p>";
@@ -71,7 +73,7 @@ public class loginRestCtl extends BaseController{
 				+ register.getRegisterUserName() + "<br>" + "    User Id : " + register.getRegisterUserId()+ "<br>" + "    No Telp : "
 				+ register.getRegisterUserPhone() + "<br></p>"
 				+ " <p>Anda dapat mengklik button dibawah ini untuk dapat langsung mengaktifkan akun anda </p>"
-				+ " <a href='http://localhost:28080/EFIM-UI/registeration/successPr.zul?id=" 
+				+ " <a href='"+appConfig.getRegisterUrl()+"?id="+responseFinal 
 				+ "'><button>Activate your Account</button></a>"
 				+ " <p>Anda dapat mengabaikan pesan ini jika tidak ingin melanjutkan <br>" + "    Best Regard,</p>"
 				+ "<br>" + "<p> <b>Notes : Pesan ini akan kadaluarsa dalam 3 hari</b> </p>";
@@ -83,7 +85,9 @@ public class loginRestCtl extends BaseController{
 	}
 	
 	@PostMapping(value = "/validation")
-	public String isValidToContinue(@RequestBody Map<String, Object> body, HttpServletRequest request) {
+	public String isValidToContinue(@RequestBody Map<String, Object> body, HttpServletRequest request, HttpSession session) {
+		Map<String, Object> mapp = new HashMap<>();
+		mapp.put("isValid", false);
 		System.out.println("masuk ke dalam rm validation");
 		body.put("user", body.get("user"));
 		body.put("pass", body.get("pass"));
@@ -103,13 +107,14 @@ public class loginRestCtl extends BaseController{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-				return redirectToUri(request,  "/dashboard");
+			session.setAttribute("userPrivilageCustom", upc);    
+			mapp.put("isValid", true);
+			mapp.put("url",  redirectToUri(new HttpInjector(request, session),  "/dashboard/head"));
 		 }
-		
-		return redirectToUri(request,"/login/enter");
+		return new Gson().toJson(mapp);
 
 	}
+	
 	
 	@PostMapping(value="/requestForgot")
 	public String resultRequest(@RequestBody Map<String, Object> body, HttpServletRequest request) {
@@ -158,7 +163,7 @@ public class loginRestCtl extends BaseController{
 					+ " Kami mendengar bahwa anda baru saja kehilangan password anda. Kami kirimkan link untuk "
 					+ " dapat mereset password yang anda punya sekarang </p>"
 					+ " <p>Anda dapat mengklik button dibawah ini untuk dapat langsung mereset password anda </p>"
-					+ " <a href='http://localhost:28080/EFIM-UI/forgot/forgotPr.zul?id=" + responseFinal
+					+ " <a href='"+appConfig.getForgotUrl()+"?id=" + responseFinal
 					+ "'><button>Reset Your Password</button></a>"
 					+ " <p>Anda dapat mengabaikan pesan ini jika tidak ingin melanjutkan <br>" + "    Best Regard,</p>"
 					+ " <br>" + " <p> <b>Notes : Pesan ini akan kadaluarsa dalam 3 hari</b> </p>";

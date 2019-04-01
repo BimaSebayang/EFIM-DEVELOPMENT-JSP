@@ -3,6 +3,7 @@ package dao.headuser;
 import java.io.Serializable;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import entity.headuser.TblDataUser;
 import entity.headuser.TblSessionUser;

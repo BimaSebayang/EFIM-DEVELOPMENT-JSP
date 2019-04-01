@@ -28,6 +28,7 @@ public class TblSessionUserSvcImpl implements TblSessionUserSvc{
 	@Autowired
 	private TblDataUserDao tableDataUserDao;
 	
+	
 	@Override
 	public Map<String, Object> getResultUser() {
 		//List<Object[]> users = tableDataUserDao.selectAll();

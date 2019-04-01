@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import id.co.roxas.efim.angularjsstyle.controller.component.owner.BaseController;
+import id.co.roxas.efim.angularjsstyle.lib.HttpInjector;
 
 @Controller
 @RequestMapping("/login")
@@ -15,12 +16,12 @@ public class loginCtl extends BaseController{
 
 	@RequestMapping("/head")
 	public String header(HttpServletRequest request) {
-		return redirectToUri(request, "head");
+		return redirectToUri(new HttpInjector(request,null), "head");
 	}
 	
 	@RequestMapping("/enter")
 	public String enter(HttpServletRequest request) {
-		return redirectToUri(request, "login/login");
+		return redirectToUri(new HttpInjector(request, null), "login/login");
 	}
 	
 	

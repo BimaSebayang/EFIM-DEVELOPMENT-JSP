@@ -12,18 +12,17 @@ app.controller('validationLogin',function($scope,$http,$location,$window){
 	    		user : $scope.user,
 	    		pass : $scope.pass
 	    };
-		
 	    $http.post(url, data, config).then(function (response) {
-	    	$scope.redirectToUrl = function(){
-	    		$window.location.href = response.data;
-	    	}
+	    	 var values = response.data;
+	    	 if(values["isValid"]==true){
+	    		 $window.location.href = values["url"];
+	    	 }else{
+	    		 $scope.user = "";
+	    		 $scope.pass = "";
+	    	 }
 	      }, function error(response) {
-	        $scope.postResultMessage = "Error with status: " +  response.statusText;
-	      });
-	    
-	    $scope.user = "";
-	    $scope.pass = "";
-	      
+	         $scope.postResultMessage = "Error with status: " +  response.statusText;
+	      });	  
 	}
 });
 
