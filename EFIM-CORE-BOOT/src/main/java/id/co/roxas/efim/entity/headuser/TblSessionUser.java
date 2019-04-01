@@ -1,5 +1,7 @@
 package id.co.roxas.efim.entity.headuser;
 
+import java.io.Serializable;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
@@ -18,7 +20,8 @@ import id.co.roxas.efim.entity.headuser.pk.TblSessionUserPk;
 @Table(name="TBL_SESSION_USER", schema="HEADUSER")
 @IdClass(TblSessionUserPk.class)
 //@Access(AccessType.FIELD)
-public class TblSessionUser {
+public class TblSessionUser implements Serializable{
+	private static final long serialVersionUID = -9082931515101720723L;
 	private String userSessionCode;
 	private String sessionStatus;
 	private Integer sessionTime;
@@ -29,7 +32,7 @@ public class TblSessionUser {
 	
 	private TblDataUser tblDataUser;
 	
-	@OneToOne(mappedBy = "tblSessionUser")
+	@OneToOne(mappedBy = "userSessionCode")
 	public TblDataUser getTblDataUser() {
 		return tblDataUser;
 	}

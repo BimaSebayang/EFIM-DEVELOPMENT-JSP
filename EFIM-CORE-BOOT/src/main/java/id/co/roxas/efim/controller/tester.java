@@ -14,8 +14,10 @@ import com.google.gson.Gson;
 
 import Share.Dto.HeadUser.TblDataUserDto;
 import Share.Dto.HeadUser.TblSessionUserDto;
+import Share.Dto.Master.TblCodeDto;
 import id.co.roxas.efim.dao.headuser.TblDataUserDao;
 import id.co.roxas.efim.dao.headuser.TblSessionUserDao;
+import id.co.roxas.efim.dao.master.TblCodeDao;
 import id.co.roxas.efim.entity.headuser.TblDataUser;
 import id.co.roxas.efim.entity.headuser.TblSessionUser;
 import ma.glasnost.orika.MapperFacade;
@@ -33,28 +35,31 @@ public class tester {
 	@Autowired
 	TblSessionUserDao tblSessionUserDao;
 	
+	@Autowired
+	TblCodeDao tblCodeDao;
+	
+	@RequestMapping("/master/all")
+	public List<TblCodeDto> selectAllMaster(){
+		List<TblCodeDto> tblCodeDtos = mapperFacade.mapAsList(tblCodeDao.findAll(), TblCodeDto.class);
+		return tblCodeDtos;
+	}
+	
 	@RequestMapping("/all")
-    public Map<String, Object> dataUsers(){
-		Map<String, Object> mapper = new HashMap<>();
+    public List<TblDataUserDto> dataUsers(){
 		List<TblDataUser> dataUser = tblDataUserDao.findAll();
 		List<TblDataUserDto> dataUserDtos = new ArrayList<>();
 		for (TblDataUser tblDataUser : dataUser) {
 			TblDataUserDto tblDataUserDto = new TblDataUserDto();
 			tblDataUserDto = mapperFacade.map(tblDataUser, TblDataUserDto.class);
-			TblSessionUserDto tblSessionUserDto= mapperFacade.map(tblDataUser.getTblSessionUser(), TblSessionUserDto.class);
-			tblDataUserDto.setTblSessionUserDto(tblSessionUserDto);
 			dataUserDtos.add(tblDataUserDto);
 		}
-		mapper.put("result", new Gson().toJson(dataUserDtos));
-		return mapper;
+		return dataUserDtos;
 	}
 	
 	@RequestMapping("/all/object")
     public TblDataUserDto dataUserss(){
 		TblDataUser tblDataUser = tblDataUserDao.selectByTblSessionUser();
 		TblDataUserDto tblDataUserDto = mapperFacade.map(tblDataUser, TblDataUserDto.class);
-		TblSessionUserDto sessionUserDto = mapperFacade.map(tblDataUser.getTblSessionUser(), TblSessionUserDto.class);
-		tblDataUserDto.setTblSessionUserDto(sessionUserDto);
 		return tblDataUserDto;
 	}
 	

@@ -1,27 +1,26 @@
 package id.co.roxas.efim.entity.headuser;
 
-import java.util.Date;
-
-import javax.persistence.Access;
-import javax.persistence.AccessType;
+import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import id.co.roxas.efim.entity.headuser.pk.TblDataUserPk;
+import id.co.roxas.efim.entity.master.TblCode;
 
 @Entity
 @Table(name = "TBL_DATA_USER", schema="HEADUSER")
 @IdClass(TblDataUserPk.class)
-public class TblDataUser {
+public class TblDataUser implements Serializable{
+	private static final long serialVersionUID = 1407112479642990435L;
 	private String userId;
 	private String userName;
 	private String userPassword;
@@ -30,19 +29,30 @@ public class TblDataUser {
 	private Double userMaxDbstorage;
 	private String userPhoto;
 	private String createdDate;
-	private String userStatus;
+	private TblCode userStatus;
 	private String projectCode;
-	private TblSessionUser tblSessionUser;
+	private TblSessionUser userSessionCode;
 
+	@ManyToOne
+	@JoinColumn(name="USER_STATUS", referencedColumnName="MST_CODE_TYPE")
+	public TblCode getUserStatus() {
+		return userStatus;
+	}
+
+	public void setUserStatus(TblCode userStatus) {
+		this.userStatus = userStatus;
+	}
+
+	
 	
 	@OneToOne(cascade= CascadeType.ALL)
 	@JoinColumn(name="USER_SESSION_CODE")
-	public TblSessionUser getTblSessionUser() {
-		return tblSessionUser;
+	public TblSessionUser getUserSessionCode() {
+		return userSessionCode;
 	}
 
-	public void setTblSessionUser(TblSessionUser tblSessionUser) {
-		this.tblSessionUser = tblSessionUser;
+	public void setUserSessionCode(TblSessionUser userSessionCode) {
+		this.userSessionCode = userSessionCode;
 	}
 
 	@Id
@@ -107,15 +117,6 @@ public class TblDataUser {
 
 	public void setCreatedDate(String createdDate) {
 		this.createdDate = createdDate;
-	}
-
-	@Column(name = "USER_STATUS")
-	public String getUserStatus() {
-		return userStatus;
-	}
-
-	public void setUserStatus(String userStatus) {
-		this.userStatus = userStatus;
 	}
 
 	@Column(name = "PROJECT_CODE")

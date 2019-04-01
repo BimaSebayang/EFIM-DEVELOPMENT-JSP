@@ -12,7 +12,7 @@ import id.co.roxas.efim.entity.headuser.pk.TblDataUserPk;
 
 public interface TblDataUserDao extends JpaRepository<TblDataUser, TblDataUserPk>{
 
-	@Query("select a from TblDataUser a where a.tblSessionUser.userSessionCode = 'GBOLAAHQWCCDAHKLCCLV'")
+	@Query("select a from TblDataUser a where a.userSessionCode.userSessionCode = 'GBOLAAHQWCCDAHKLCCLV'")
 	public TblDataUser selectByTblSessionUser();
 	
 //  @Query("Select a,b from TblDataUser a, TblSessionUser b where a.userSessionCode = b.userSessionCode")

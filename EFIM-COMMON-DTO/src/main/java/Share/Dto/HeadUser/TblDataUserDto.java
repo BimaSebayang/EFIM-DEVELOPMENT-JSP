@@ -5,24 +5,35 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import Share.Dto.Master.TblCodeDto;
+
+
 public class TblDataUserDto implements Serializable{
 	private static final long serialVersionUID = 4180449126938812144L;
     private String userId;
     private String userName;
     private String userPassword;
-    private String userSessionCode;
     private Double userMaxDbstorage;
     private String userMail;
 	private String userPhone;
     private String userPhoto;
     private String createdDate;
-    private String userStatus;
+    private TblCodeDto userStatus;
+	private TblSessionUserDto userSessionCode;
     private String projectCode;
-    private TblSessionUserDto tblSessionUserDto = new TblSessionUserDto();
     private List<TblSessionUserDto> tblSessionUserDtos = new ArrayList<TblSessionUserDto>();
     private String messageEmail;
     private String subjecEmail;
+    
+    
+    
  
+	public TblCodeDto getUserStatus() {
+		return userStatus;
+	}
+	public void setUserStatus(TblCodeDto userStatus) {
+		this.userStatus = userStatus;
+	}
 	public List<TblSessionUserDto> getTblSessionUserDtos() {
 		return tblSessionUserDtos;
 	}
@@ -53,12 +64,7 @@ public class TblDataUserDto implements Serializable{
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
-	public String getUserSessionCode() {
-		return userSessionCode;
-	}
-	public void setUserSessionCode(String userSessionCode) {
-		this.userSessionCode = userSessionCode;
-	}
+
 	public Double getUserMaxDbstorage() {
 		return userMaxDbstorage;
 	}
@@ -77,23 +83,20 @@ public class TblDataUserDto implements Serializable{
 	public void setCreatedDate(String createdDate) {
 		this.createdDate = createdDate;
 	}
-	public String getUserStatus() {
-		return userStatus;
-	}
-	public void setUserStatus(String userStatus) {
-		this.userStatus = userStatus;
-	}
 	public String getProjectCode() {
 		return projectCode;
 	}
 	public void setProjectCode(String projectCode) {
 		this.projectCode = projectCode;
 	}
-	public TblSessionUserDto getTblSessionUserDto() {
-		return tblSessionUserDto;
+	
+	
+	
+	public TblSessionUserDto getUserSessionCode() {
+		return userSessionCode;
 	}
-	public void setTblSessionUserDto(TblSessionUserDto tblSessionUserDto) {
-		this.tblSessionUserDto = tblSessionUserDto;
+	public void setUserSessionCode(TblSessionUserDto userSessionCode) {
+		this.userSessionCode = userSessionCode;
 	}
 	public String getUserName() {
 		return userName;
