@@ -466,11 +466,11 @@ display: inline-block;
     border: none;
     box-shadow : none;
     font-family: Helvetica;
-    position : relative;
-    top : 8px;
+    position : absolute;
+    bottom : 0%;
     height : 50px;
     width : 120px;
-    right : -30px;
+    left:  20.5%;
     transition : all .2s;
  }
  
@@ -489,11 +489,11 @@ display: inline-block;
     box-shadow : none;
     font-size : 11.5pt;
     font-family: Helvetica;
-    position : relative;
-    top : -59px;
+    position : absolute;
+    bottom : 0%;
     height : 50px;
     width : 120px;
-    right : -150px;
+    left : 116.5%;
     transition : all .2s;
  }
  
@@ -514,11 +514,11 @@ display: inline-block;
     box-shadow : none;
     font-size : 11.5pt;
     font-family: Helvetica;
-    position : relative;
-    top :-136px;
+    position : absolute;
+    bottom  :0%;
     height : 50px;
     width : 130px;
-    right : -270px;
+    left : 212.5%;
     transition : all .2s;
  }
  
@@ -539,7 +539,7 @@ display: inline-block;
 	background-color: #FFFFFF ;
 }
  
- .z-textbox { color: black; }
+.z-textbox { color: black; }
 .z-apply-mask,
 .z-modal-mask {
     background: black;
@@ -553,8 +553,6 @@ display: inline-block;
     padding: 25px;
     margin: 25px;
     position : absolute;
-    top : 130px; 
-    left : 485px; 
  }
  
  .regRegisterBox{

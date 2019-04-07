@@ -51,9 +51,9 @@ public abstract class BaseController extends componentConfiguration implements S
 	}
 	
 	public String redirectToUri(HttpInjector injector, String url) {
-		if (!isAccessFromDesktop(injector.getRequest())) {
-			url = "/mobile/" + url;
-		}
+//		if (!isAccessFromDesktop(injector.getRequest())) {
+//			url = "/mobile/" + url;
+//		}
 		System.out.println("redirect ke url : " + url);
 
 		String finalUrl = url;

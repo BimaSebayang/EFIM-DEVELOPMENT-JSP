@@ -12,7 +12,7 @@ app.controller('postcontroller', function($scope, $http, $location) {
             firstname: $scope.firstname,
             lastname: $scope.lastname
         };
-    
+
     $http.post(url, data, config).then(function (response) {
       $scope.postResultMessage = response.data;
     }, function error(response) {

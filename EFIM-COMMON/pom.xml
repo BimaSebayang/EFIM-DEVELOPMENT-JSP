@@ -172,12 +172,7 @@
 			<version>${c3p0.version}</version>
 		</dependency>
 
-		<!-- DB Driver. Comment this if using JNDI -->
-		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>${jdbc.version}</version>
-		</dependency>
+		
 
 		<!-- jasypt encryptor -->
 		<dependency>
@@ -198,12 +193,7 @@
 			<version>2.10.1</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.microsoft.sqlserver</groupId>
-			<artifactId>sqljdbc4</artifactId>
-			<version>4.0</version>
-		</dependency>
-
+		
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>

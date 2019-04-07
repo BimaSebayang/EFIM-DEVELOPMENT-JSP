@@ -9,6 +9,16 @@ left: -10%;
 }
 
 
+#boxWrapper {
+    position: relative;
+}
+
+.selectbox {
+    position: absolute;
+    top: 0px; 
+    left: 0px;
+}
+
 
 .subtitleBlocker{
 position : relative;
@@ -41,9 +51,7 @@ border-color : red;
 left : 0%;
 }
 
-.activeblocker{
 
-}
 
 .buttonAnxiousBlocker{
 width : 90px; height : 90px;color : black; background-color : rgba(235, 95, 25, 0.16);
@@ -82,13 +90,7 @@ height: 180px; width : 200px;
     -webkit-filter: blur(3px);
 }
 
-.middleblocker{
 
-}
-
-.lowerblocker{
-
-}
 
 .radioSearch{
 position : absolute;
@@ -124,9 +126,6 @@ display: inline-blocker;
     margin: 5px;
 }
 
-.underblocker{
-
-}
 
 .w3SearchButton{
 color : black;
